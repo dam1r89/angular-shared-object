@@ -1,0 +1,39 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#">About</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">demo</h3>
+</div>
+
+<div class="jumbotron">
+  <h1>AngularJS SharedObject</h1>
+  <p class="lead">
+    Sync data through sockets!
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+</div>
+
+<div class="row marketing">
+  <h4>Open two tabs and type something bellow</h4>
+  <p>
+    <textarea rows="3" style="width:100%" ng-model="sharedObject.text"></textarea>
+  </p>
+
+  <h4>Arrays</h4>
+  <p>
+    <form ng-submit="sharedObject.array.push(item)">
+      <input type="text" ng-model="item">
+      <button type="submit">Add</button>
+    </form>
+  </p>
+  <ul>
+    <li ng-repeat="value in sharedObject.array" ng-bind="value"> </li>
+  </ul>
+
+</div>
+
+<div class="footer">
+  <p>♥ from the Yeoman team - Thank you Yeoman!</p>
+</div>

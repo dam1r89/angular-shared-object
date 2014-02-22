@@ -1,30 +1,31 @@
 'use strict';
 
-angular.module('sharedObjectDemoApp')
+angular.module('SharedObjectModule')
     .service('SharedObject', function SharedObject(Socket, $rootScope) {
         var scope = $rootScope.$new(),
             dontBroadcast = true;
 
-        scope.sharedObject = {};
 
+        scope.so = {};
 
         Socket.connect().then(onConnect);
 
         function onConnect(socket) {
-            scope.$watch('sharedObject', function(val) {
+
+            scope.$watch('so', function(val) {
                 if (dontBroadcast) return;
                 socket.emit('$soData', val);
             }, true);
 
             socket.on('$soData', function(data) {
-                scope.sharedObject = scope.sharedObject || {};
+                scope.so = scope.so || {};
 
 
                 for (var key in data) {
                     if (data.hasOwnProperty(key)) {
-                        scope.sharedObject[key] = shallowClearAndCopy(data[key], scope.sharedObject[key]);
+                        scope.so[key] = shallowClearAndCopy(data[key], scope.so[key]);
                     } else {
-                        delete scope.sharedObject[key];
+                        delete scope.so[key];
                     }
                 }
 
@@ -35,6 +36,7 @@ angular.module('sharedObjectDemoApp')
                 dontBroadcast = false;
 
             });
+
         }
 
 
@@ -58,6 +60,6 @@ angular.module('sharedObjectDemoApp')
         }
 
 
-        return scope.sharedObject;
+        return scope.so;
 
     });

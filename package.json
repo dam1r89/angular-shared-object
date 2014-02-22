@@ -1,0 +1,23 @@
+{
+  "name": "shared-object",
+  "version": "0.0.1",
+  "description": "AngularJS SharedObject module for sharing data between clients using socket.io.",
+  "main": "server/shared-object.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dam1r89/angular-shared-object.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "SharedObject",
+    "Socket.io"
+  ],
+  "author": "Damir Miladinov",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/dam1r89/angular-shared-object/issues"
+  }
+}

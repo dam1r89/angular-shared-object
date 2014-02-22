@@ -1,6 +1,5 @@
 demo
-server/node_modules
-server/index.js
-server/package.json
+server
 angular-shared-object.js
 bower.json
+.npmignore

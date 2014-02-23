@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('sharedObjectDemoApp', []);
+angular.module('sharedObjectDemoApp', ['SharedObject']);

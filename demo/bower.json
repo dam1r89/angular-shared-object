@@ -7,7 +7,8 @@
     "es5-shim": "~2.1.0",
     "jquery": "~1.10.2",
     "bootstrap": "~3.0.3",
-    "socket.io-client": "~0.9.16"
+    "socket.io-client": "~0.9.16",
+    "angular-shared-object": "https://github.com/dam1r89/angular-shared-object.git"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",

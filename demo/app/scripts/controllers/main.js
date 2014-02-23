@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('sharedObjectDemoApp')
-    .controller('MainCtrl', function($scope, SharedObject) {
+    .controller('MainCtrl', function($scope, $sharedObject) {
 
-        $scope.sharedObject = SharedObject;
+        $scope.sharedObject = $sharedObject;
 
-        $scope.sharedObject.array = SharedObject.array || [];
+        $scope.sharedObject.array = $sharedObject.array || [];
 
     });

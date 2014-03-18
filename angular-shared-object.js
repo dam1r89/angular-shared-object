@@ -5,52 +5,39 @@
 (function(window, angular, io, undefined) {
     'use strict';
 
-    angular.module('SharedObject', [])
-        .value('options', {
-            'force new connection': true,
-            port: 8010
-        })
-        .service('$sharedObject', function SharedObject($rootScope, $location, options) {
+    angular.module('SharedObject', ['SocketWrapper'])
+        .service('$sharedObject', function SharedObject($rootScope, $socket) {
             var scope = $rootScope.$new(),
-                dontBroadcast = true,
-                host = $location.protocol() + ':\\' + $location.host(),
-                socket = io.connect(host, options);
-
+                dontBroadcast = true;
 
             scope.so = {};
 
 
-            socket.on('connect', onConnect);
+            scope.$watch('so', function(val) {
 
-            function onConnect() {
+                if (dontBroadcast) return;
 
-                scope.$watch('so', function(val) {
-                    if (dontBroadcast) return;
-                    socket.emit('$soData', val);
-                }, true);
+                $socket.$emit('$soData', val);
 
-                socket.on('$soData', function(data) {
-                    scope.so = scope.so || {};
+            }, true);
+
+            $socket.$on('$soData', function(data) {
+                scope.so = scope.so || {};
 
 
-                    for (var key in data) {
-                        if (data.hasOwnProperty(key)) {
-                            scope.so[key] = shallowClearAndCopy(data[key], scope.so[key]);
-                        } else {
-                            delete scope.so[key];
-                        }
+                for (var key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        scope.so[key] = shallowClearAndCopy(data[key], scope.so[key]);
+                    } else {
+                        delete scope.so[key];
                     }
+                }
 
-                    console.log('getting', data);
+                dontBroadcast = true;
+                scope.$apply();
+                dontBroadcast = false;
 
-                    dontBroadcast = true;
-                    scope.$apply();
-                    dontBroadcast = false;
-
-                });
-
-            }
-
+            });
 
             function shallowClearAndCopy(src, dst) {
 

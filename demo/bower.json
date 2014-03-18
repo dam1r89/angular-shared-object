@@ -8,7 +8,8 @@
     "jquery": "~1.10.2",
     "bootstrap": "~3.0.3",
     "socket.io-client": "~0.9.16",
-    "angular-shared-object": "https://github.com/dam1r89/angular-shared-object.git"
+    "angular-shared-object": "/Users/dam1r89/Projects/angular-shared-object",
+    "angular-socket-wrapper": "https://github.com/dam1r89/angular-socket-wrapper.git"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",

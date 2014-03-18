@@ -6,11 +6,14 @@
     "Damir Miladinov <damir89@gmail.com>"
   ],
   "description": "AngularJS SharedObject module for sharing data between clients using socket.io.",
-  "main": "angular-shared-storage.js",
+  "main": "angular-shared-object.js",
   "keywords": [
     "AngularJS",
     "SharedObject"
   ],
+  "dependencies": {
+    "angular-socket-wrapper": "https://github.com/dam1r89/angular-socket-wrapper.git"
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",

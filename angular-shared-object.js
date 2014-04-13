@@ -12,7 +12,6 @@
 
             scope.so = {};
 
-
             scope.$watch('so', function(val) {
 
                 if (dontBroadcast) return;
@@ -28,7 +27,7 @@
 
                 $log.log('SharedObject:receive', data);
 
-                angular.copy(data, scope.so);
+                angular.extend(scope.so, data);
 
                 dontBroadcast = true;
                 scope.$apply();
